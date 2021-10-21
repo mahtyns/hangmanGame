@@ -1,10 +1,12 @@
 const words = ["Kotek", "Papuga", "Widelec", "Lampa", "Krzesło", "Astronomia", "Filiżanka", "Szampan", "Krzyżówka", "Wiersz", "Buty", "Nóż", "Pas", "Pies", "Warszawianin", ]
 
+
+
 const hangmanTable = document.querySelector(".hangman-word")
 
 const randomWord = document.querySelector(".randomBtn");
 
-const guessInput = document.querySelector(".guess-word input");
+const resultInput = document.querySelector(".guess-word input");
 
 let newWord;
 let wordLetters;
@@ -64,7 +66,7 @@ const showRandomLetter = () => {
         randomLetter = newWord[randomLetterIndex];
         let replacedIndex = 2 * randomLetterIndex + 1
         hangmanTable.textContent = hangmanTable.textContent.replace(replacedIndex, randomLetter);
-        
+         }
         
         
         
@@ -74,7 +76,7 @@ const showRandomLetter = () => {
 
         
         
-    }
+   
     else if ( 5 < newWord.length && newWord.length <= 10) {
         //losowanie 2 literek
         for (let i = 0; i < 2; i++)
@@ -107,6 +109,7 @@ const showRandomLetter = () => {
 }
 
 const showWord = () => {
+    
     hangmanTable.textContent = "";
     drawWord();
     hideLetters();
@@ -114,11 +117,11 @@ const showWord = () => {
     
 }
 
-const guessBtn = document.querySelector(".guess-word button");
+const resultBtn = document.querySelector(".guess-word button");
 
 const guessResult = (e) => {
     e.preventDefault();
-    let userGuess = guessInput.value.toLowerCase()
+    let userGuess = resultInput.value.toLowerCase()
     if ( userGuess === newWord.toLowerCase()) {
     hangmanTable.textContent = newWord;
     document.querySelector(".result p").style.color = "green";
@@ -134,14 +137,53 @@ const guessResult = (e) => {
 
 }
 
-guessBtn.addEventListener("click", guessResult);
+const letterGuessBtn = document.querySelector(".input button");
+const letterInput = document.querySelector(".input input");
+
+const checkLetter = function(e) {
+e.preventDefault();
+let guessedLetter = letterInput.value
+if (guessedLetter !== "" ) {
+    letterInput.value = ""; 
+    // console.log(guessedLetter)
+    if ( newWord.indexOf(guessedLetter) !== -1 ) {
+        let guessedIndex = newWord.indexOf(guessedLetter);
+         let replacedIndex = 2 * guessedIndex + 1
+        hangmanTable.textContent = hangmanTable.textContent.replace(replacedIndex, guessedLetter);
+        console.log(guessedIndex)
+
+    
+    }
+    else if (newWord.indexOf(guessedLetter) === -1) {
+        document.querySelector(".result p").style.color = "blue";
+    document.querySelector(".result p").style.fontSize = "30px";
+        document.querySelector(".result p").textContent = "Nie ma tej litery"
+    }
+    
+
+}
+
+
+else {
+    alert("brak litery");
+}
+}
+
+
+
+
+letterGuessBtn.addEventListener("click", checkLetter);
+
+resultBtn.addEventListener("click", guessResult);
 
 randomWord.addEventListener("click", showWord)
 
 document.querySelector(".resetBtn").addEventListener("click", () => {
     hangmanTable.textContent = "";
+    resultInput.value = "";
 })
 
 document.querySelector(".showBtn").addEventListener("click", () => {
     hangmanTable.textContent = newWord;
 })
+
