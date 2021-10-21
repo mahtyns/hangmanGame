@@ -1,9 +1,10 @@
-const words = ["Kotek", "Papuga", "Widelec", "Lampa", "Krzesło", "Astronomia", "Filiżanka", "Szampan", "Krzyżówka", "Wiersz", "Buty", "Nóż", "Mama", "Pas", "Pies", "Warszawianin", ]
+const words = ["Kotek", "Papuga", "Widelec", "Lampa", "Krzesło", "Astronomia", "Filiżanka", "Szampan", "Krzyżówka", "Wiersz", "Buty", "Nóż", "Pas", "Pies", "Warszawianin", ]
 
 const hangmanTable = document.querySelector(".hangman-word")
 
 const randomWord = document.querySelector(".randomBtn");
 
+const guessInput = document.querySelector(".guess-word input");
 
 let newWord;
 let wordLetters;
@@ -19,10 +20,22 @@ let randomLetter;
 //         }
 //         // console.log(hangmanTable.textContent.length);
 //         // console.log(indices);
-
         
-       
 // }
+
+
+// to do - repeating letters
+// const repeatedLetter = function(txt) {
+//     let repeatedInx = 0;
+//     for (let i = 0; i < txt.length; i++) {
+//         if (txt.indexOf(txt[i]) !== txt.lastIndexOf(txt[i])) {
+//             repeatedInx++;
+//             console.log(repeatedInx)
+//         return false;}
+//     }
+//     return true
+// }
+
 
 // Replace letter function 
 String.prototype.replace = function(index, replaced) {
@@ -73,8 +86,6 @@ const showRandomLetter = () => {
             let replacedIndex = 2 * randomLetterIndex + 1
         hangmanTable.textContent = hangmanTable.textContent.replace(replacedIndex, randomLetter);
        
-
-
         }
     }
     else {
@@ -91,7 +102,7 @@ const showRandomLetter = () => {
 
         }
     }
-
+    
  
 }
 
@@ -102,6 +113,28 @@ const showWord = () => {
     showRandomLetter();
     
 }
+
+const guessBtn = document.querySelector(".guess-word button");
+
+const guessResult = (e) => {
+    e.preventDefault();
+    let userGuess = guessInput.value.toLowerCase()
+    if ( userGuess === newWord.toLowerCase()) {
+    hangmanTable.textContent = newWord;
+    document.querySelector(".result p").style.color = "green";
+    document.querySelector(".result p").style.fontSize = "30px";
+
+    document.querySelector(".result p").textContent = "Gratulacje!!!" }
+    else {
+    document.querySelector(".result p").style.color = "red";
+    document.querySelector(".result p").style.fontSize = "30px";
+
+    document.querySelector(".result p").textContent = "Niestety nie :(";
+    }
+
+}
+
+guessBtn.addEventListener("click", guessResult);
 
 randomWord.addEventListener("click", showWord)
 
