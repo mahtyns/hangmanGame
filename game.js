@@ -8,6 +8,11 @@ const randomWord = document.querySelector(".randomBtn");
 
 const resultInput = document.querySelector(".guess-word input");
 
+const addOwnWord = document.querySelector(".add-own input");
+
+const addOwnBtn = document.querySelector(".add-own button");
+
+
 let newWord;
 let wordLetters;
 let randomLetter;
@@ -83,8 +88,6 @@ const showRandomLetter = () => {
         {
            let randomLetterIndex = Math.floor(Math.random() * newWord.length);
            randomLetter = newWord[randomLetterIndex];
-        //    console.log(randomLetter);
-            // console.log(randomLetterIndex);
             let replacedIndex = 2 * randomLetterIndex + 1
         hangmanTable.textContent = hangmanTable.textContent.replace(replacedIndex, randomLetter);
        
@@ -154,20 +157,40 @@ const letterInput = document.querySelector(".input input");
 
 const checkLetter = function(e) {
 e.preventDefault();
-let guessedLetter = letterInput.value
+let guessedLetter = letterInput.value.toLowerCase();
 if (guessedLetter !== "" ) {
+   
     letterInput.value = ""; 
     // console.log(guessedLetter)
     if ( newWord.indexOf(guessedLetter) !== -1 ) {
+        //One letter
         if (newWord.indexOf(guessedLetter) === newWord.lastIndexOf(guessedLetter)) {
          let guessedIndex = newWord.indexOf(guessedLetter);
          let replacedIndex = 2 * guessedIndex + 1
         hangmanTable.textContent = hangmanTable.textContent.replace(replacedIndex, guessedLetter);
-        console.log(guessedIndex) }
+         let existing = hangmanTable.textContent;
+         console.log(existing)
+        }
         else {
+            // Letters that are repeated
+            const letterIndices = [];
+            let guessedIndex = newWord.indexOf(guessedLetter);
+              while (guessedIndex != -1 ) {
+              letterIndices.push(guessedIndex);
+              guessedIndex = newWord.indexOf(guessedLetter, guessedIndex + 1)
+              }
+            // console.log("jest wiecej liter");
             
+            const newInd = letterIndices.map(val => 2*val + 1);
+            // console.log(letterIndices)
+            // console.log(newInd);
+            newInd.forEach(ind => {
+                hangmanTable.textContent = hangmanTable.textContent.replace(ind, guessedLetter);
+                let existing = hangmanTable.textContent;
+                console.log(existing)
 
-            }
+            })
+         
         }
 
     
@@ -187,8 +210,13 @@ else {
 }
 }
 
+const addWords = (e) => {
+e.preventDefault();
+words.push(addOwnWord.value.toLowerCase())
+addOwnWord.value = "";
+}
 
-
+addOwnBtn.addEventListener("click", addWords);
 
 letterGuessBtn.addEventListener("click", checkLetter);
 
