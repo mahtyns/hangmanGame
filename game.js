@@ -155,8 +155,21 @@ const guessResult = (e) => {
 const letterGuessBtn = document.querySelector(".input button");
 const letterInput = document.querySelector(".input input");
 
+const checkIfExist = () => {
+let guessedLetter = letterInput.value.toLowerCase();
+let guessedIndex = hangmanTable.textContent.indexOf(guessedLetter);
+if (guessedIndex !== -1) {
+    document.querySelector(".result p").style.color = "red";
+    document.querySelector(".result p").style.fontSize = "30px";
+
+    document.querySelector(".result p").textContent = "Ta literka juz jest"
+}
+else return
+}
+
 const checkLetter = function(e) {
 e.preventDefault();
+checkIfExist();
 let guessedLetter = letterInput.value.toLowerCase();
 if (guessedLetter !== "" ) {
    
@@ -169,7 +182,7 @@ if (guessedLetter !== "" ) {
          let replacedIndex = 2 * guessedIndex + 1
         hangmanTable.textContent = hangmanTable.textContent.replace(replacedIndex, guessedLetter);
          let existing = hangmanTable.textContent;
-         console.log(existing)
+        //  console.log(existing)
         }
         else {
             // Letters that are repeated
@@ -187,7 +200,7 @@ if (guessedLetter !== "" ) {
             newInd.forEach(ind => {
                 hangmanTable.textContent = hangmanTable.textContent.replace(ind, guessedLetter);
                 let existing = hangmanTable.textContent;
-                console.log(existing)
+                // console.log(existing)
 
             })
          
@@ -208,6 +221,11 @@ if (guessedLetter !== "" ) {
 else {
     alert("brak litery");
 }
+}
+
+const clearSpaces = () => {
+// clear spaces between "_" char
+
 }
 
 const addWords = (e) => {
