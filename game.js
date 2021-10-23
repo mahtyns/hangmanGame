@@ -1,4 +1,4 @@
-const words = ["Kotek", "Papuga", "Widelec", "Lampa", "Krzesło", "Astronomia", "Filiżanka", "Szampan", "Krzyżówka", "Wiersz", "Buty", "Nóż", "Pas", "Pies", "Warszawianin", ]
+const words = ["kotek", "papuga", "widelec", "lampa", "krzesło", "astronomia", "filiżanka", "szampan", "krzyżówka", "wiersz", "buty", "nóż", "pas", "pies", "warszawianin", ]
 
 
 
@@ -78,7 +78,7 @@ const showRandomLetter = () => {
         
    
     else if ( 5 < newWord.length && newWord.length <= 10) {
-        //losowanie 2 literek
+        //Draw 2 letters
         for (let i = 0; i < 2; i++)
         {
            let randomLetterIndex = Math.floor(Math.random() * newWord.length);
@@ -91,6 +91,7 @@ const showRandomLetter = () => {
         }
     }
     else {
+        // Draw letters for longer words
         for (let i = 0; i < 3; i++)
         {
            let randomLetterIndex = Math.floor(Math.random() * newWord.length);
@@ -122,6 +123,15 @@ const resultBtn = document.querySelector(".guess-word button");
 const guessResult = (e) => {
     e.preventDefault();
     let userGuess = resultInput.value.toLowerCase()
+    
+    if (newWord === undefined) {
+        document.querySelector(".result p").style.fontSize = "30px";
+        document.querySelector(".result p").textContent = "Nie wylosowano slowa";
+        return
+
+    }
+
+
     if ( userGuess === newWord.toLowerCase()) {
     hangmanTable.textContent = newWord;
     document.querySelector(".result p").style.color = "green";
@@ -134,6 +144,8 @@ const guessResult = (e) => {
 
     document.querySelector(".result p").textContent = "Niestety nie :(";
     }
+    
+   
 
 }
 
@@ -147,10 +159,16 @@ if (guessedLetter !== "" ) {
     letterInput.value = ""; 
     // console.log(guessedLetter)
     if ( newWord.indexOf(guessedLetter) !== -1 ) {
-        let guessedIndex = newWord.indexOf(guessedLetter);
+        if (newWord.indexOf(guessedLetter) === newWord.lastIndexOf(guessedLetter)) {
+         let guessedIndex = newWord.indexOf(guessedLetter);
          let replacedIndex = 2 * guessedIndex + 1
         hangmanTable.textContent = hangmanTable.textContent.replace(replacedIndex, guessedLetter);
-        console.log(guessedIndex)
+        console.log(guessedIndex) }
+        else {
+            
+
+            }
+        }
 
     
     }
