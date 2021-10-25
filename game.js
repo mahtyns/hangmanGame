@@ -16,6 +16,7 @@ const addOwnBtn = document.querySelector(".add-own button");
 let newWord;
 let wordLetters;
 let randomLetter;
+let gameResult = 0; 
 
 // const indices = [];
 
@@ -146,6 +147,7 @@ const guessResult = (e) => {
     document.querySelector(".result p").style.fontSize = "30px";
 
     document.querySelector(".result p").textContent = "Niestety nie :(";
+    gameResult++;
     }
     
    
@@ -216,6 +218,7 @@ if (guessedLetter !== "" ) {
         document.querySelector(".result p").style.color = "blue";
     document.querySelector(".result p").style.fontSize = "30px";
         document.querySelector(".result p").textContent = "Nie ma tej litery"
+        gameResult++;
     
     }
     
@@ -270,9 +273,12 @@ randomWord.addEventListener("click", showWord)
 document.querySelector(".resetBtn").addEventListener("click", () => {
     hangmanTable.textContent = "";
     resultInput.value = "";
+    document.querySelector(".result p").textContent = ""
+
 })
 
 document.querySelector(".showBtn").addEventListener("click", () => {
     hangmanTable.textContent = newWord;
 })
+
 
