@@ -169,6 +169,7 @@ else return
 
 const checkLetter = function(e) {
 e.preventDefault();
+
 checkIfExist();
 let guessedLetter = letterInput.value.toLowerCase();
 if (guessedLetter !== "" ) {
@@ -182,6 +183,8 @@ if (guessedLetter !== "" ) {
          let replacedIndex = 2 * guessedIndex + 1
         hangmanTable.textContent = hangmanTable.textContent.replace(replacedIndex, guessedLetter);
          let existing = hangmanTable.textContent;
+
+       
         //  console.log(existing)
         }
         else {
@@ -200,6 +203,7 @@ if (guessedLetter !== "" ) {
             newInd.forEach(ind => {
                 hangmanTable.textContent = hangmanTable.textContent.replace(ind, guessedLetter);
                 let existing = hangmanTable.textContent;
+            
                 // console.log(existing)
 
             })
@@ -212,6 +216,7 @@ if (guessedLetter !== "" ) {
         document.querySelector(".result p").style.color = "blue";
     document.querySelector(".result p").style.fontSize = "30px";
         document.querySelector(".result p").textContent = "Nie ma tej litery"
+    
     }
     
 
@@ -221,11 +226,31 @@ if (guessedLetter !== "" ) {
 else {
     alert("brak litery");
 }
+
+compareStrings();
+
 }
 
-const clearSpaces = () => {
-// clear spaces between "_" char
+const compareStrings = () => {
+// clear spaces between "_" char and compare
+let existingString = hangmanTable.textContent.replaceAll(' ', '');
+if (existingString === newWord) {
+    document.querySelector(".result p").style.color = "green";
+    document.querySelector(".result p").style.fontSize = "30px";
 
+    document.querySelector(".result p").textContent = "Gratulacje!!!"
+}
+// const indices = [];
+// let dashIndex = existingString.indexOf(" ");
+// while (dashIndex != -1 ) {
+// indices.push(dashIndex);
+// dashIndex = hangmanTable.textContent.indexOf(" ", dashIndex + 1);
+// }
+// for (let i = 0; i < existingString.length; i++) {
+//     existingString = existingString.replace(" ", ".");
+// }
+
+console.log(existingString) 
 }
 
 const addWords = (e) => {
