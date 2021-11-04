@@ -20,6 +20,9 @@
         .hangman-drawing {
             height: 30vh;
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .hangman-word {
             height: 10vh;
@@ -45,7 +48,9 @@
 </head>
 <body>
     <div class="game">
-    <div class="hangman-drawing"></div>
+    <div class="hangman-drawing">
+        <img src="pictures/pic1.jpg" style="max-height: 250px;" alt="Start" class="drawing">
+    </div>
     <div class="hangman-word">
         <p></p>
     </div>

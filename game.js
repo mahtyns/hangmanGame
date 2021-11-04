@@ -1,6 +1,38 @@
-const words = ["kotek", "papuga", "widelec", "lampa", "krzesło", "astronomia", "filiżanka", "szampan", "krzyżówka", "wiersz", "buty", "nóż", "pas", "pies", "warszawiak", "glonojad", "kaszanka", "kalarepa", "telewizor", "żyłka", "rumianek", "kontroler", "cyberpunk" ]
+const words = ["kotek", "papuga", "widelec", "lampa", "krzesło", "astronomia", "filiżanka", "szampan", "krzyżówka", "wiersz", "buty", "nóż", "pas", "pies", "warszawiak", "biotechnologia", "gabaryty", "kontrola", "cyberpunk", "mieszadełko", "kalarepa", "cukierniczka", "widmo", "sałata", "poezja", "lukrecja" ]
 
+const imgList = [{
+ img: "pictures/pic1.jpg",
+ },
+{
+ img: "pictures/pic2.jpg",
+},
+{
+ img: "pictures/pic3.jpg",
+ },
+{
+ img: "pictures/pic4.jpg",
+ },
+{
+ img: "pictures/pic5.jpg",
+ },
+{
+ img: "pictures/pic6.jpg",
+},
+{
+ img: "pictures/pic7.jpg",
+ },
+{
+ img: "pictures/pic9.jpg",
+ },
+{
+ img: "pictures/pic9.jpg",
+ },
+{
+ img: "pictures/pic10.jpg",
+ },
+];
 
+const hangmanDrawing = document.querySelector("img.drawing")
 
 const hangmanTable = document.querySelector(".hangman-word")
 
@@ -17,6 +49,8 @@ let newWord;
 let wordLetters;
 let randomLetter;
 let gameResult = 0; 
+
+
 
 // const indices = [];
 
@@ -148,6 +182,8 @@ const guessResult = (e) => {
 
     document.querySelector(".result p").textContent = "Niestety nie :(";
     gameResult++;
+    hangmanDrawing.src = imgList[gameResult].img;
+
     }
     
    
@@ -163,8 +199,10 @@ let guessedIndex = hangmanTable.textContent.indexOf(guessedLetter);
 if (guessedIndex !== -1) {
     document.querySelector(".result p").style.color = "red";
     document.querySelector(".result p").style.fontSize = "30px";
-
     document.querySelector(".result p").textContent = "Ta literka juz jest"
+    gameResult++;
+    hangmanDrawing.src = imgList[gameResult].img;
+
 }
 else return
 }
@@ -219,6 +257,8 @@ if (guessedLetter !== "" ) {
     document.querySelector(".result p").style.fontSize = "30px";
         document.querySelector(".result p").textContent = "Nie ma tej litery"
         gameResult++;
+     hangmanDrawing.src = imgList[gameResult].img;
+    
     
     }
     
