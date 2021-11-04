@@ -1,4 +1,4 @@
-const words = ["kotek", "papuga", "widelec", "lampa", "krzesło", "astronomia", "filiżanka", "szampan", "krzyżówka", "wiersz", "buty", "nóż", "pas", "pies", "warszawianin", ]
+const words = ["kotek", "papuga", "widelec", "lampa", "krzesło", "astronomia", "filiżanka", "szampan", "krzyżówka", "wiersz", "buty", "nóż", "pas", "pies", "warszawiak", "glonojad", "kaszanka", "kalarepa", "telewizor", "żyłka", "rumianek", "kontroler", "cyberpunk" ]
 
 
 
