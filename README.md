@@ -15,3 +15,6 @@ Project-Game to learn JavaScript. Currently in Polish.
 
 ## Demo
 See the Game Here: [Page](https://mahtyns.github.io/hangmanGame/)
+
+## WIP
+- Repeating letters behaviour
