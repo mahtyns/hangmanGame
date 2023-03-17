@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisielec</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+        }
+        .game {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hangman-drawing {
+            height: 30vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hangman-word {
+            height: 10vh;
+            font-size: 30px;
+            margin-bottom: 5vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .options {
+            height: 10vh;
+        }
+        .input {
+            height: 10vh;
+        }
+    .guess-word {
+    height: 10vh;;
+}
+.add-own {
+     height: 10vh;
+            font-size: 30px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="game">
+    <div class="hangman-drawing">
+        <img src="pictures/pic1.jpg" style="max-height: 250px;" alt="Start" class="drawing">
+    </div>
+    <div class="hangman-word">
+        <p></p>
+    </div>
+    
+    <div class="input">
+        <input placeholder="Wybierz litere" type="text" maxlength="1">
+        <button>OK</button>
+    </div>
+    <div class="guess-word"><input placeholder="Zgaduj slowo" type="text">
+        <button>Zgaduje</button>
+    </div>
+    <div class="options">
+        <button class="randomBtn">Losuj</button>
+        <button class="showBtn">Pokaz slowo</button>
+        <button class="resetBtn">Reset</button>
+    </div>
+    <div class="result"><p></p></div>
+    <div class="add-own">
+        <input type="text" placeholder="Dodaj wlasne slowa">
+        <button>Dodaj</button>
+    </div>
+    </div>
+    
+    
+
+    
+    <script src="game.js"></script>
+    
+
+</body>
+</html>
