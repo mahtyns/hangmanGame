@@ -5,46 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wisielec</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0px;
-        }
-        .game {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    <link rel="stylesheet" href="hangman-styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-        .hangman-drawing {
-            height: 30vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .hangman-word {
-            height: 10vh;
-            font-size: 30px;
-            margin-bottom: 5vh;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .options {
-            height: 10vh;
-        }
-        .input {
-            height: 10vh;
-        }
-    .guess-word {
-    height: 10vh;;
-}
-.add-own {
-     height: 10vh;
-            font-size: 30px;
-}
-
-    </style>
 </head>
 <body>
     <div class="game">
@@ -55,22 +20,22 @@
         <p></p>
     </div>
     
-    <div class="input">
-        <input placeholder="Wybierz litere" type="text" maxlength="1">
-        <button>OK</button>
+    <div class="row d-flex flex-row mb-2">
+        <input class="form-control col-sm-8" placeholder="Wybierz litere" type="text" maxlength="1">
+        <button type="button" class="btn btn-primary col-sm-4">OK</button>
     </div>
-    <div class="guess-word"><input placeholder="Zgaduj slowo" type="text">
-        <button>Zgaduje</button>
+    <div class="guess-word row"><input placeholder="Zgaduj slowo" type="text" class="form-control">
+        <button type="button" class="btn btn-warning">Zgaduje</button>
     </div>
-    <div class="options">
-        <button class="randomBtn">Losuj</button>
-        <button class="showBtn">Pokaz slowo</button>
-        <button class="resetBtn">Reset</button>
+    <div class="options btn-group">
+        <button type="button" class="btn btn-warning">Losuj</button>
+        <button type="button" class="btn btn-warning">Pokaz slowo</button>
+        <button type="button" class="btn btn-warning">Reset</button>
     </div>
     <div class="result"><p></p></div>
-    <div class="add-own">
-        <input type="text" placeholder="Dodaj wlasne slowa">
-        <button>Dodaj</button>
+    <div class="add-own row">
+        <input type="text" placeholder="Dodaj wlasne slowa" class="form-control">
+        <button type="button" class="btn btn-primary">Dodaj</button>
     </div>
     </div>
     

@@ -1,0 +1,34 @@
+* {
+            box-sizing: border-box;
+
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            margin: 2em 0
+        }
+        .game {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hangman-drawing {
+            height: 30vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hangman-word {
+            height: 10vh;
+            font-size: 30px;
+            margin-bottom: 5vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .options {
+            height: 10vh;
+        }
+
